@@ -1,4 +1,5 @@
-cc_library_host_static {
+cc_library_static {
+    host_supported: true,
     name: "libsrtp2",
     srcs: [
         "crypto/cipher/aes.c",

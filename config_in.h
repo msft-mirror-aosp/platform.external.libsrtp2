@@ -1,104 +1,196 @@
-/*
- * config_in.h
- *
- * template for header config file for Secure RTP and UST implementation
- *
- * David A. McGrew
- * Cisco Systems, Inc.
- */
+/* config_in.h.  Generated from configure.ac by autoheader.  */
 
+/* Define if building universal (internal helper macro) */
+#undef AC_APPLE_UNIVERSAL_BUILD
 
-#ifndef CONFIG_H
-#define CONFIG_H
+/* Define if building for a CISC machine (e.g. Intel). */
+#undef CPU_CISC
 
-/* if we're on a big endian machine, we need to define this */
+/* Define if building for a RISC machine (assume slow byte access). */
+#undef CPU_RISC
 
-#define WORDS_BIGENDIAN      0
+/* Define to enabled debug logging for all mudules. */
+#undef ENABLE_DEBUG_LOGGING
 
-/* check for <stdint.h> or <machine/types.h>              */
+/* Logging statments will be writen to this file. */
+#undef ERR_REPORTING_FILE
 
-#define HAVE_STDINT_H        0
-#define HAVE_MACHINE_TYPES_H 0
-#define HAVE_SYS_INT_TYPES_H 0
+/* Define to redirect logging to stdout. */
+#undef ERR_REPORTING_STDOUT
 
-/* check for microsoft integer definitions (e.g., cygwin) */
+/* Define this to use AES-GCM. */
+#undef GCM
 
-#define HAVE_MS_TYPES        1
+/* Define to 1 if you have the <arpa/inet.h> header file. */
+#undef HAVE_ARPA_INET_H
 
-/* if we don't have uio.h, we'll need to define struct iovec */
+/* Define to 1 if you have the <byteswap.h> header file. */
+#undef HAVE_BYTESWAP_H
 
-#define HAVE_SYS_UIO_H       0
+/* Define to 1 if you have the `inet_aton' function. */
+#undef HAVE_INET_ATON
 
-/* <unistd.h> is used by some test/ apps                  */
+/* Define to 1 if the system has the type `int16_t'. */
+#undef HAVE_INT16_T
 
-#define HAVE_UNISTD_H        0
+/* Define to 1 if the system has the type `int32_t'. */
+#undef HAVE_INT32_T
 
-/* test apps should use inet_aton(), if it's available */
+/* Define to 1 if the system has the type `int8_t'. */
+#undef HAVE_INT8_T
 
-#define HAVE_INET_ATON       0
+/* Define to 1 if you have the <inttypes.h> header file. */
+#undef HAVE_INTTYPES_H
 
-/* check if we have syslog functions                      */
+/* Define to 1 if you have the `dl' library (-ldl). */
+#undef HAVE_LIBDL
 
-#define HAVE_SYSLOG_H        0
+/* Define to 1 if you have the `nspr4' library (-lnspr4). */
+#undef HAVE_LIBNSPR4
 
-/* check to see if the user has requested the use of syslog */
+/* Define to 1 if you have the `nss3' library (-lnss3). */
+#undef HAVE_LIBNSS3
 
-#define USE_SYSLOG           0
+/* Define to 1 if you have the `socket' library (-lsocket). */
+#undef HAVE_LIBSOCKET
 
-#define ERR_REPORTING_STDOUT 0
+/* Define to 1 if you have the `z' library (-lz). */
+#undef HAVE_LIBZ
 
-#define ERR_REPORTING_SYSLOG (HAVE_SYSLOG_H & USE_SYSLOG)
+/* Define to 1 if you have the <machine/types.h> header file. */
+#undef HAVE_MACHINE_TYPES_H
 
-/* define ERR_REPORTING_FILE to have messages sent to file */
+/* Define to 1 if you have the <memory.h> header file. */
+#undef HAVE_MEMORY_H
 
-#define ERR_REPORTING_FILE 
+/* Define to 1 if you have the <netinet/in.h> header file. */
+#undef HAVE_NETINET_IN_H
 
-/* 
- * set ENABLE_DEBUGGING to 1 to compile in dynamic debugging system,
- * set it to 0 to not compile in dynamic debugging (for a slight
- * performance improvement)
- */
+/* Define to 1 if you have the <nss.h> header file. */
+#undef HAVE_NSS_H
 
-#define ENABLE_DEBUGGING     0
+/* Define to 1 if you have the `winpcap' library (-lwpcap) */
+#undef HAVE_PCAP
 
-/* if we're going to use GDOI, define SRTP_GDOI to 1      */
+/* Define to 1 if you have the `sigaction' function. */
+#undef HAVE_SIGACTION
 
-#define SRTP_GDOI            0
+/* Define to 1 if you have the `socket' function. */
+#undef HAVE_SOCKET
 
-/*
- * CPU_type is defined as 1 if the host processor is of that type.
- * Note that more than one type can be defined at once; this is so
- * that special instructions and other optimizations can be handled
- * independently.
- * 
- * CPU_RISC     RISC machines (assume slow byte access)
- * CPU_CISC     CISC machines (e.g. Intel)
- * CPU_ALTIVEC  Motorola's SIMD instruction set
- * 
- */
+/* Define to 1 if you have the <stdint.h> header file. */
+#undef HAVE_STDINT_H
 
-#define CPU_RISC     0
-#define CPU_CISC     0
-#define CPU_ALTIVEC  0
+/* Define to 1 if you have the <stdlib.h> header file. */
+#undef HAVE_STDLIB_H
 
-/*
- * if /dev/random is available, then DEV_RANDOM == 1
- *
- * /dev/random is a (true) random number generator which is
- * implemented in many modern operating systems
- */
+/* Define to 1 if you have the <strings.h> header file. */
+#undef HAVE_STRINGS_H
 
-#define DEV_RANDOM 0
+/* Define to 1 if you have the <string.h> header file. */
+#undef HAVE_STRING_H
 
-/* check for stdlib.h - we use it for xalloc() and free() */
+/* Define to 1 if you have the <sys/int_types.h> header file. */
+#undef HAVE_SYS_INT_TYPES_H
 
-#define HAVE_STDLIB_H 0
+/* Define to 1 if you have the <sys/socket.h> header file. */
+#undef HAVE_SYS_SOCKET_H
 
-/* whether to use ismacryp code */
-#define GENERIC_AESICM 0
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#undef HAVE_SYS_STAT_H
 
-#endif /* CONFIG_H */
+/* Define to 1 if you have the <sys/types.h> header file. */
+#undef HAVE_SYS_TYPES_H
 
+/* Define to 1 if you have the <sys/uio.h> header file. */
+#undef HAVE_SYS_UIO_H
 
+/* Define to 1 if the system has the type `uint16_t'. */
+#undef HAVE_UINT16_T
 
+/* Define to 1 if the system has the type `uint32_t'. */
+#undef HAVE_UINT32_T
 
+/* Define to 1 if the system has the type `uint64_t'. */
+#undef HAVE_UINT64_T
+
+/* Define to 1 if the system has the type `uint8_t'. */
+#undef HAVE_UINT8_T
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#undef HAVE_UNISTD_H
+
+/* Define to 1 if you have the `usleep' function. */
+#undef HAVE_USLEEP
+
+/* Define to 1 if you have the <windows.h> header file. */
+#undef HAVE_WINDOWS_H
+
+/* Define to 1 if you have the <winsock2.h> header file. */
+#undef HAVE_WINSOCK2_H
+
+/* Define to use X86 inlined assembly code */
+#undef HAVE_X86
+
+/* Define this to use NSS crypto. */
+#undef NSS
+
+/* Define this to use OpenSSL crypto. */
+#undef OPENSSL
+
+/* Define this if OPENSSL_cleanse is broken. */
+#undef OPENSSL_CLEANSE_BROKEN
+
+/* Define this to use OpenSSL KDF for SRTP. */
+#undef OPENSSL_KDF
+
+/* Define to the address where bug reports for this package should be sent. */
+#undef PACKAGE_BUGREPORT
+
+/* Define to the full name of this package. */
+#undef PACKAGE_NAME
+
+/* Define to the full name and version of this package. */
+#undef PACKAGE_STRING
+
+/* Define to the one symbol short name of this package. */
+#undef PACKAGE_TARNAME
+
+/* Define to the home page for this package. */
+#undef PACKAGE_URL
+
+/* Define to the version of this package. */
+#undef PACKAGE_VERSION
+
+/* The size of `unsigned long', as computed by sizeof. */
+#undef SIZEOF_UNSIGNED_LONG
+
+/* The size of `unsigned long long', as computed by sizeof. */
+#undef SIZEOF_UNSIGNED_LONG_LONG
+
+/* Define to 1 if you have the ANSI C header files. */
+#undef STDC_HEADERS
+
+/* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
+   significant byte first (like Motorola and SPARC, unlike Intel). */
+#if defined AC_APPLE_UNIVERSAL_BUILD
+# if defined __BIG_ENDIAN__
+#  define WORDS_BIGENDIAN 1
+# endif
+#else
+# ifndef WORDS_BIGENDIAN
+#  undef WORDS_BIGENDIAN
+# endif
+#endif
+
+/* Define to empty if `const' does not conform to ANSI C. */
+#undef const
+
+/* Define to `__inline__' or `__inline' if that's what the C compiler
+   calls it, or to nothing if 'inline' is not supported under any name.  */
+#ifndef __cplusplus
+#undef inline
+#endif
+
+/* Define to `unsigned int' if <sys/types.h> does not define. */
+#undef size_t

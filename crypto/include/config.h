@@ -1,121 +1,197 @@
-/* include/config.h.  Generated automatically by configure.  */
-/*
- * config.h
- *
- * template for header config file for Secure RTP and UST implementation
- *
- * David A. McGrew
- * Cisco Systems, Inc.
- */
+/* crypto/include/config.h.  Generated from config_in.h by configure.  */
+/* config_in.h.  Generated from configure.ac by autoheader.  */
 
+/* Define if building universal (internal helper macro) */
+/* #undef AC_APPLE_UNIVERSAL_BUILD */
 
-#ifndef CONFIG_H
-#define CONFIG_H
+/* Define if building for a CISC machine (e.g. Intel). */
+#define CPU_CISC 1
 
-/* if we're on a big endian machine, we need to define this */
+/* Define if building for a RISC machine (assume slow byte access). */
+/* #undef CPU_RISC */
 
-#include <sys/types.h>
-#if (BYTE_ORDER == BIG_ENDIAN)
-#define WORDS_BIGENDIAN      1
-#else
-#define WORDS_BIGENDIAN      0
-#endif
+/* Define to enabled debug logging for all mudules. */
+/* #undef ENABLE_DEBUG_LOGGING */
 
-/* check for <stdint.h> or <machine/types.h>              */
+/* Logging statments will be writen to this file. */
+/* #undef ERR_REPORTING_FILE */
 
-#define HAVE_STDINT_H        1
-#define HAVE_MACHINE_TYPES_H 1
-#define HAVE_SYS_INT_TYPES_H 0
+/* Define to redirect logging to stdout. */
+/* #undef ERR_REPORTING_STDOUT */
 
-/* check for microsoft integer definitions (e.g., cygwin) */
+/* Define this to use AES-GCM. */
+/* #undef GCM */
 
-#define HAVE_MS_TYPES        1
+/* Define to 1 if you have the <arpa/inet.h> header file. */
+#define HAVE_ARPA_INET_H 1
 
-/* if we don't have uio.h, we'll need to define struct iovec */
+/* Define to 1 if you have the <byteswap.h> header file. */
+#define HAVE_BYTESWAP_H 1
 
-#define HAVE_SYS_UIO_H       1
+/* Define to 1 if you have the `inet_aton' function. */
+#define HAVE_INET_ATON 1
 
-/* <unistd.h> is used by some test/ apps                  */
+/* Define to 1 if the system has the type `int16_t'. */
+#define HAVE_INT16_T 1
 
-#define HAVE_UNISTD_H        1
+/* Define to 1 if the system has the type `int32_t'. */
+#define HAVE_INT32_T 1
 
-/* test apps should use inet_aton(), if it's available */
+/* Define to 1 if the system has the type `int8_t'. */
+#define HAVE_INT8_T 1
 
-#define HAVE_INET_ATON       1
+/* Define to 1 if you have the <inttypes.h> header file. */
+#define HAVE_INTTYPES_H 1
 
-/* check if we have syslog functions                      */
+/* Define to 1 if you have the `dl' library (-ldl). */
+/* #undef HAVE_LIBDL */
 
-#define HAVE_SYSLOG_H        1
+/* Define to 1 if you have the `nspr4' library (-lnspr4). */
+/* #undef HAVE_LIBNSPR4 */
 
-/* check to see if the user has requested the use of syslog */
+/* Define to 1 if you have the `nss3' library (-lnss3). */
+/* #undef HAVE_LIBNSS3 */
 
-#define USE_SYSLOG           0
+/* Define to 1 if you have the `socket' library (-lsocket). */
+/* #undef HAVE_LIBSOCKET */
 
-#define ERR_REPORTING_STDOUT 1
+/* Define to 1 if you have the `z' library (-lz). */
+/* #undef HAVE_LIBZ */
 
-#define ERR_REPORTING_SYSLOG (HAVE_SYSLOG_H & USE_SYSLOG)
+/* Define to 1 if you have the <machine/types.h> header file. */
+/* #undef HAVE_MACHINE_TYPES_H */
 
-/* define ERR_REPORTING_FILE to have messages sent to file */
+/* Define to 1 if you have the <memory.h> header file. */
+#define HAVE_MEMORY_H 1
 
-#define ERR_REPORTING_FILE 
+/* Define to 1 if you have the <netinet/in.h> header file. */
+#define HAVE_NETINET_IN_H 1
 
-/* 
- * set ENABLE_DEBUGGING to 1 to compile in dynamic debugging system,
- * set it to 0 to not compile in dynamic debugging (for a slight
- * performance improvement)
- */
+/* Define to 1 if you have the <nss.h> header file. */
+/* #undef HAVE_NSS_H */
 
-#define ENABLE_DEBUGGING     1
+/* Define to 1 if you have the `winpcap' library (-lwpcap) */
+/* #undef HAVE_PCAP */
 
-/* if we're going to use GDOI, define SRTP_GDOI to 1      */
+/* Define to 1 if you have the `sigaction' function. */
+#define HAVE_SIGACTION 1
 
-#define SRTP_GDOI            0
+/* Define to 1 if you have the `socket' function. */
+#define HAVE_SOCKET 1
 
-/*
- * CPU_type is defined as 1 if the host processor is of that type.
- * Note that more than one type can be defined at once; this is so
- * that special instructions and other optimizations can be handled
- * independently.
- * 
- * CPU_RISC     RISC machines (assume slow byte access)
- * CPU_CISC     CISC machines (e.g. Intel)
- * 
- */
+/* Define to 1 if you have the <stdint.h> header file. */
+#define HAVE_STDINT_H 1
 
-#if WORDS_BIGENDIAN
-#define CPU_RISC     1
-#else
-#define CPU_CISC     1
-#endif
-
-/*
- * define CPU_16 if cryptoalgorithms should use 16-bit operations -
- * this is probably only the case on very low-end devices
- */
-#define CPU_16       0
-
-/* 
- * define CPU_ALTIVEC in order to use the G4/G5 processor's AltiVec
- * SIMD instruction set where possible
- */
-#define CPU_ALTIVEC  0
-
-
-/*
- * if /dev/random is available, then DEV_RANDOM == 1
- *
- * /dev/random is a (true) random number generator which is
- * implemented in many modern operating systems
- */
-
-#define DEV_RANDOM 0
-
-/* check for stdlib.h - we use it for alloc() and free() */
-
+/* Define to 1 if you have the <stdlib.h> header file. */
 #define HAVE_STDLIB_H 1
 
-#endif /* CONFIG_H */
+/* Define to 1 if you have the <strings.h> header file. */
+#define HAVE_STRINGS_H 1
 
+/* Define to 1 if you have the <string.h> header file. */
+#define HAVE_STRING_H 1
 
+/* Define to 1 if you have the <sys/int_types.h> header file. */
+/* #undef HAVE_SYS_INT_TYPES_H */
 
+/* Define to 1 if you have the <sys/socket.h> header file. */
+#define HAVE_SYS_SOCKET_H 1
 
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#define HAVE_SYS_STAT_H 1
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#define HAVE_SYS_TYPES_H 1
+
+/* Define to 1 if you have the <sys/uio.h> header file. */
+#define HAVE_SYS_UIO_H 1
+
+/* Define to 1 if the system has the type `uint16_t'. */
+#define HAVE_UINT16_T 1
+
+/* Define to 1 if the system has the type `uint32_t'. */
+#define HAVE_UINT32_T 1
+
+/* Define to 1 if the system has the type `uint64_t'. */
+#define HAVE_UINT64_T 1
+
+/* Define to 1 if the system has the type `uint8_t'. */
+#define HAVE_UINT8_T 1
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#define HAVE_UNISTD_H 1
+
+/* Define to 1 if you have the `usleep' function. */
+#define HAVE_USLEEP 1
+
+/* Define to 1 if you have the <windows.h> header file. */
+/* #undef HAVE_WINDOWS_H */
+
+/* Define to 1 if you have the <winsock2.h> header file. */
+/* #undef HAVE_WINSOCK2_H */
+
+/* Define to use X86 inlined assembly code */
+#define HAVE_X86 1
+
+/* Define this to use NSS crypto. */
+/* #undef NSS */
+
+/* Define this to use OpenSSL crypto. */
+/* #undef OPENSSL */
+
+/* Define this if OPENSSL_cleanse is broken. */
+/* #undef OPENSSL_CLEANSE_BROKEN */
+
+/* Define this to use OpenSSL KDF for SRTP. */
+/* #undef OPENSSL_KDF */
+
+/* Define to the address where bug reports for this package should be sent. */
+#define PACKAGE_BUGREPORT "https://github.com/cisco/libsrtp/issues"
+
+/* Define to the full name of this package. */
+#define PACKAGE_NAME "libsrtp2"
+
+/* Define to the full name and version of this package. */
+#define PACKAGE_STRING "libsrtp2 2.3.0-pre"
+
+/* Define to the one symbol short name of this package. */
+#define PACKAGE_TARNAME "libsrtp2"
+
+/* Define to the home page for this package. */
+#define PACKAGE_URL ""
+
+/* Define to the version of this package. */
+#define PACKAGE_VERSION "2.3.0-pre"
+
+/* The size of `unsigned long', as computed by sizeof. */
+#define SIZEOF_UNSIGNED_LONG 8
+
+/* The size of `unsigned long long', as computed by sizeof. */
+#define SIZEOF_UNSIGNED_LONG_LONG 8
+
+/* Define to 1 if you have the ANSI C header files. */
+#define STDC_HEADERS 1
+
+/* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
+   significant byte first (like Motorola and SPARC, unlike Intel). */
+#if defined AC_APPLE_UNIVERSAL_BUILD
+# if defined __BIG_ENDIAN__
+#  define WORDS_BIGENDIAN 1
+# endif
+#else
+# ifndef WORDS_BIGENDIAN
+/* #  undef WORDS_BIGENDIAN */
+# endif
+#endif
+
+/* Define to empty if `const' does not conform to ANSI C. */
+/* #undef const */
+
+/* Define to `__inline__' or `__inline' if that's what the C compiler
+   calls it, or to nothing if 'inline' is not supported under any name.  */
+#ifndef __cplusplus
+/* #undef inline */
+#endif
+
+/* Define to `unsigned int' if <sys/types.h> does not define. */
+/* #undef size_t */

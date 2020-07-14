@@ -32,6 +32,8 @@ cc_library_static {
         "-DHAVE_CONFIG_H",
     ],
     export_include_dirs: [
+        "crypto/include",
+        "include",
         "exported_include",
     ],
 }

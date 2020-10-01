@@ -1,5 +1,7 @@
 cc_library_static {
     host_supported: true,
+    // vendor needed for libpreprocessing effects.
+    vendor: true,
     name: "libsrtp2",
     srcs: [
         "crypto/cipher/aes.c",
@@ -35,5 +37,9 @@ cc_library_static {
         "crypto/include",
         "include",
         "exported_include",
+    ],
+    visibility: [
+        "//external/webrtc:__subpackages__",
+        "//device/google/cuttlefish/host/frontend/webrtc:__subpackages__",
     ],
 }

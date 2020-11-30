@@ -1,5 +1,7 @@
 cc_library_static {
     host_supported: true,
+    // vendor needed for libpreprocessing effects.
+    vendor: true,
     name: "libsrtp2",
     srcs: [
         "crypto/cipher/aes.c",
@@ -36,4 +38,30 @@ cc_library_static {
         "include",
         "exported_include",
     ],
+    visibility: [
+        "//external/webrtc:__subpackages__",
+        "//device/google/cuttlefish/host/frontend/webrtc:__subpackages__",
+    ],
+}
+
+cc_fuzz {
+    name: "libsrtp2-fuzzer",
+    host_supported: true,
+    vendor: true,
+    static_libs: ["libsrtp2"],
+    cflags: [
+        "-Wno-unused-parameter",
+    ],
+    srcs: [
+        "fuzzer/fuzzer.c",
+        "fuzzer/mt19937.cpp",
+        "fuzzer/testmem.c",
+    ],
+    // There are so many corpus files that when all are used it
+    // exceeds the posix_spawn limit. So, only some of the files
+    // are used.
+    corpus: ["fuzzer/corpus/0*"],
+    fuzz_config: {
+        componentid: 87896
+    }
 }

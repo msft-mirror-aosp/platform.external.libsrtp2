@@ -61,7 +61,6 @@ cc_library_static {
     ],
     cflags: [
         "-Wno-unused-parameter",
-        "-Wno-implicit-function-declaration",
         "-DHAVE_CONFIG_H",
     ],
     export_include_dirs: [

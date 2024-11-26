@@ -61,7 +61,6 @@ cc_library_static {
     ],
     cflags: [
         "-Wno-unused-parameter",
-        "-Wno-implicit-function-declaration",
         "-DHAVE_CONFIG_H",
     ],
     export_include_dirs: [
@@ -93,9 +92,9 @@ cc_fuzz {
     // are used.
     corpus: ["fuzzer/corpus/0*"],
     fuzzing_frameworks: {
-      afl: false,
+        afl: false,
     },
     fuzz_config: {
-        componentid: 87896
-    }
+        componentid: 87896,
+    },
 }

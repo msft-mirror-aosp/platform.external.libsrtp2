@@ -92,9 +92,9 @@ cc_fuzz {
     // are used.
     corpus: ["fuzzer/corpus/0*"],
     fuzzing_frameworks: {
-      afl: false,
+        afl: false,
     },
     fuzz_config: {
-        componentid: 87896
-    }
+        componentid: 87896,
+    },
 }

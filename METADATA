@@ -12,4 +12,7 @@ third_party {
     value: "https://github.com/cisco/libsrtp"
     version: "46755e2aa15b618854b1ab502b4787e584aa590d"
   }
+  security: {
+    tag: "NVD-CPE2.3:cpe:/a:cisco:libsrtp:2.3.0"
+  }
 }

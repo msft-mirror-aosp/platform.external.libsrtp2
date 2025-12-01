@@ -62,7 +62,12 @@ cc_library_static {
     cflags: [
         "-Wno-unused-parameter",
         "-DHAVE_CONFIG_H",
-    ],
+    ] + select(release_flag("RELEASE_BUILD_CLANG_VERSION"), {
+        "clang-r584948": [
+            "-Wno-uninitialized-const-pointer",
+        ],
+        default: [],
+    }),
     export_include_dirs: [
         "crypto/include",
         "include",

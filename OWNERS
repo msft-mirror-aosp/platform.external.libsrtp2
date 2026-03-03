@@ -1,1 +1,5 @@
-include platform/system/core:/janitors/OWNERS
+# This is the android emulator branch
+bohu@google.com
+joshuaduong@google.com
+jpcottin@google.com
+jansene@google.com
